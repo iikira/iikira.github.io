@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于ios lighttpd-php-mysql的文件上传问题 | ☆i~i~Kira~</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;nbsp; &amp;nbsp;    最初用ios lighttpd-php-mysql本地搭建php网页时，本人抱着凡事都要试试看的想法，在网上搞了几个源码玩玩。有一个文件管理的php源码，名字叫KodExplorer，类似于百度网盘这样的。    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;搭好KodExplorer后，试了一下里面的文件上传功能，发现上次几百k的小文件还行，但是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于ios lighttpd-php-mysql的文件上传问题">
+<meta property="og:url" content="http://www.iikira.com/2016/04/09/ios-lighttpd-php-mysql1/index.html">
+<meta property="og:site_name" content="☆i~i~Kira~">
+<meta property="og:description" content="&amp;nbsp; &amp;nbsp;    最初用ios lighttpd-php-mysql本地搭建php网页时，本人抱着凡事都要试试看的想法，在网上搞了几个源码玩玩。有一个文件管理的php源码，名字叫KodExplorer，类似于百度网盘这样的。    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;搭好KodExplorer后，试了一下里面的文件上传功能，发现上次几百k的小文件还行，但是">
+<meta property="og:image" content="http://www.iikira.com/img/article/201607/fpic1423.jpg">
+<meta property="og:updated_time" content="2016-07-14T10:05:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于ios lighttpd-php-mysql的文件上传问题">
+<meta name="twitter:description" content="&amp;nbsp; &amp;nbsp;    最初用ios lighttpd-php-mysql本地搭建php网页时，本人抱着凡事都要试试看的想法，在网上搞了几个源码玩玩。有一个文件管理的php源码，名字叫KodExplorer，类似于百度网盘这样的。    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;搭好KodExplorer后，试了一下里面的文件上传功能，发现上次几百k的小文件还行，但是">
+<meta name="twitter:image" content="http://www.iikira.com/img/article/201607/fpic1423.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="☆i~i~Kira~" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://assets-cdn.github.com/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">☆i~i~Kira~</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Good Luck To You!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/分享/">分享</a>
+        
+          <a class="main-nav-link" href="/categories/笔记/">笔记</a>
+        
+          <a class="main-nav-link" href="/categories/记录/">记录</a>
+        
+          <a class="main-nav-link" href="/categories/随笔/">随笔</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="www.iikira.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-ios-lighttpd-php-mysql1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/09/ios-lighttpd-php-mysql1/" class="article-date">
+  <time datetime="2016-04-09T07:21:26.000Z" itemprop="datePublished">2016-04-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/记录/">记录</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于ios lighttpd-php-mysql的文件上传问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br>    &nbsp; &nbsp;<img src="img/article/201607/fpic1423.jpg"><br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    <span style="font-family: Simsun; font-size: medium;">最</span>初用ios lighttpd-php-mysql本地搭建php网页时，本人抱着凡事都要试试看的想法，在网上搞了几个源码玩玩。有一个文件管理的php源码，名字叫KodExplorer，类似于百度网盘这样的。<br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    &nbsp; &nbsp; &nbsp; &nbsp;搭好KodExplorer后，试了一下里面的文件上传功能，发现上次几百k的小文件还行，但是大于1m的文件会报错，错误为http错误。<br></p><br><a id="more"></a><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    &nbsp; &nbsp; &nbsp; &nbsp;于是琢磨了两天，期间又是baidu又是360搜索，最终解决。<br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    &nbsp; &nbsp; &nbsp; &nbsp;开始，修改php.ini，能改则改，无效。<br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    &nbsp; &nbsp; &nbsp; &nbsp;接着，怀疑问题出在lighttpd上，而不是php。于是不断的尝试，修改lighttpd的配置文件<br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    &nbsp; &nbsp; &nbsp; &nbsp;期间我的ipad重启了n次（差点白了）<br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    &nbsp; &nbsp; &nbsp; &nbsp;当我觉得这并不是什么不得了的事情，就要放弃的时候，突然想起lighttpd的输出日志！结果一看，有了新发现<br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    错误信息如下：<br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    <span style="color: #FF0000;">2016-04-08 05:43:19: (chunk.c.461) denying upload as opening temp-file for upload failed: Too many open files&nbsp;</span><br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    于是再去修改lighttpd的配置文件lighttpd-atv.conf的以下信息<br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    将&nbsp;<span style="color: #FF0000; text-decoration: underline;">server.max-fds = 256</span>&nbsp;改为<span style="color: #FF0000;">&nbsp;<span style="text-decoration: underline;">server.max-fds = 2048</span>&nbsp;</span><br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    &nbsp; &nbsp; &nbsp; &nbsp;总之就是把数值改大，重启设备，亲测上传几十mb的文件没问题。<br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    &nbsp; &nbsp; &nbsp; &nbsp;官网<a style="color: rgb(146, 208, 80); text-decoration: none;" href="http://lighttpd.net/" target="_blank">http://www.lighttpd.net/</a>提到&nbsp;server.max-fds 的默认值为1024，可能是ios lighttpd-php-mysql的作者故意把这个值改小了吧！<br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    &nbsp; &nbsp; &nbsp; &nbsp;<br></p><br><p style="font-family: Simsun; font-size: medium; white-space: normal;"><br>    &nbsp; &nbsp; &nbsp; &nbsp;最后附上ios lighttpd-php-mysql的Cydia源地址：<a style="color: rgb(255, 192, 0); text-decoration: none;" href="http://ios-webstack.tk/cydia" target="_blank">http://ios-webstack.tk/cydia</a><br></p><br><p><br>    <br><br></p>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.iikira.com/2016/04/09/ios-lighttpd-php-mysql1/" data-id="ciqn6x1am0008t4tx7icbhddu" class="article-share-link" data-share="baidu" data-title="关于ios lighttpd-php-mysql的文件上传问题">Share</a>
+      
+
+      
+        <a href="http://www.iikira.com/2016/04/09/ios-lighttpd-php-mysql1/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lighttpd/">lighttpd</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/03/xbz-ban/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          贴吧小吧主封禁10天代码
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/08/One-Piece/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">One Piece</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/04/09/ios-lighttpd-php-mysql1/" data-title="关于ios lighttpd-php-mysql的文件上传问题" data-url="http://www.iikira.com/2016/04/09/ios-lighttpd-php-mysql1/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/分享/">分享</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/记录/">记录</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Carina/">Carina</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lighttpd/">lighttpd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sms/">sms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度贴吧/">百度贴吧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Carina/" style="font-size: 20px;">Carina</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/lighttpd/" style="font-size: 10px;">lighttpd</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/sms/" style="font-size: 10px;">sms</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/百度贴吧/" style="font-size: 10px;">百度贴吧</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/09/Carina-Plan/">Carina Plan</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/03/ubuntu-conf/">使用carina容器建设Ubuntu镜像等</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/30/ss-find-code/">[转]Google搜索技巧(找码)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/08/mac-mysql/">在mac上安装mysql5.7.10</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/06/SMSs/">SMS相关</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://lengthmin.com" target="_blank">lengthmin</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 konica<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/分享/" class="mobile-nav-link">分享</a>
+  
+    <a href="/categories/笔记/" class="mobile-nav-link">笔记</a>
+  
+    <a href="/categories/记录/" class="mobile-nav-link">记录</a>
+  
+    <a href="/categories/随笔/" class="mobile-nav-link">随笔</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"iikira"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用carina容器建设Ubuntu镜像等 | ☆i~i~Kira~</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、基础配置
+
+#远程连接容器1source ./ub/docker.env
+#下载第三方ubuntu镜像1wget http://download.openvz.org/template/precreated/ubuntu-14.04-x86_64.tar.gz
+#上传镜像并引用1cat ubuntu-14.04-x86_64.tar.gz |./docker import - ubuntu:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用carina容器建设Ubuntu镜像等">
+<meta property="og:url" content="http://www.iikira.com/2016/07/03/ubuntu-conf/index.html">
+<meta property="og:site_name" content="☆i~i~Kira~">
+<meta property="og:description" content="一、基础配置
+
+#远程连接容器1source ./ub/docker.env
+#下载第三方ubuntu镜像1wget http://download.openvz.org/template/precreated/ubuntu-14.04-x86_64.tar.gz
+#上传镜像并引用1cat ubuntu-14.04-x86_64.tar.gz |./docker import - ubuntu:">
+<meta property="og:image" content="http://www.iikira.com/img/article/201607/fpic5193.jpg">
+<meta property="og:updated_time" content="2016-07-14T16:26:06.957Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用carina容器建设Ubuntu镜像等">
+<meta name="twitter:description" content="一、基础配置
+
+#远程连接容器1source ./ub/docker.env
+#下载第三方ubuntu镜像1wget http://download.openvz.org/template/precreated/ubuntu-14.04-x86_64.tar.gz
+#上传镜像并引用1cat ubuntu-14.04-x86_64.tar.gz |./docker import - ubuntu:">
+<meta name="twitter:image" content="http://www.iikira.com/img/article/201607/fpic5193.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="☆i~i~Kira~" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://assets-cdn.github.com/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">☆i~i~Kira~</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Good Luck To You!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/categories/分享/">分享</a>
+        
+          <a class="main-nav-link" href="/categories/笔记/">笔记</a>
+        
+          <a class="main-nav-link" href="/categories/记录/">记录</a>
+        
+          <a class="main-nav-link" href="/categories/随笔/">随笔</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/About">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="www.iikira.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-ubuntu-conf" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/03/ubuntu-conf/" class="article-date">
+  <time datetime="2016-07-03T01:50:23.000Z" itemprop="datePublished">2016-07-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用carina容器建设Ubuntu镜像等
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/article/201607/fpic5193.jpg" alt="康乃馨"></p>
+<h3>一、基础配置</h3>
+
+<p>#远程连接容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ./ub/docker.env</div></pre></td></tr></table></figure></p>
+<p>#下载第三方ubuntu镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://download.openvz.org/template/precreated/ubuntu-14.04-x86_64.tar.gz</div></pre></td></tr></table></figure></p>
+<p>#上传镜像并引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ubuntu-14.04-x86_64.tar.gz |./docker import - ubuntu:base</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>#安装镜像至容器，自行添加所需端口，不能使用22,2376,7946,8300,8400,8600端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./docker run -p 80:80 -p 220:22 -p 666:666 -p 8787:8787 -p 3306:3306 -p 21:21 -p 443:443 -t -i ubuntu:base /bin/bash</div></pre></td></tr></table></figure></p>
+<p>#更新<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get update</div></pre></td></tr></table></figure></p>
+<p>#安装MySQL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install mysql-server mysql-client</div></pre></td></tr></table></figure></p>
+<p>#设置mysql的配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/mysql/my.cnf</div></pre></td></tr></table></figure></p>
+<p>#找到 bind-address =127.0.0.1 将其注释掉；//作用是使得不再只允许本地访问；</p>
+<p>#重启mysql：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/mysql restart;</div></pre></td></tr></table></figure></p>
+<p>#安装apache2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install apache2</div></pre></td></tr></table></figure></p>
+<p>#安装php5<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get install php5 libapache2-mod-php5</div><div class="line">apt-get install php5-mysql php5-curl php5-gd php5-idn php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl</div></pre></td></tr></table></figure></p>
+<p>#这步一定要做，不然apache2启动不了，防止出错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir /run/lock</div></pre></td></tr></table></figure></p>
+<p>#重启apache2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/apache2 restart</div></pre></td></tr></table></figure></p>
+<p>#配置ssh登录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service ssh start</div></pre></td></tr></table></figure></p>
+<p>#不慎掉线，重新连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./docker exec -it wordpress su</div></pre></td></tr></table></figure></p>
+<p>#设置密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./docker exec -it wordpress passwd</div></pre></td></tr></table></figure></p>
+<p>#删掉容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./docker rm 容器名字</div></pre></td></tr></table></figure></p>
+<h3>二、快速配置</h3>
+
+<p>#上传镜像并启用，设置root密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">source ./web5/docker.env</div><div class="line">cat ubuntu-14.04-x86_64.tar.gz |docker import - ubuntu:base</div><div class="line">docker run --name ubuntu -p 5800:5800 -p 5900:5900 -p 5901:5901 -p 80:80 -p 220:22 -p 666:666 -p 8787:8787 -p 3306:3306 -p 21:21 -p 443:443 -t -i ubuntu:base /bin/bash</div><div class="line">passwd</div></pre></td></tr></table></figure></p>
+<p>#启动ssh服务，配置安装环境等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">service ssh start</div><div class="line">mkdir /run/lock</div><div class="line">apt-get update</div><div class="line">apt-get install apache2 php5 libapache2-mod-php5 php5-mysql php5-curl php5-gd php5-idn php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl git curl subversion mysql-server mysql-client -y</div></pre></td></tr></table></figure></p>
+<p>#配置代码等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">service postfix start</div><div class="line">cd /var/www/html</div><div class="line">git clone https://github.com/iikira/wmsign.git</div><div class="line">git clone https://github.com/iikira/filebox.git</div><div class="line">rm -rf ./filebox/.*</div><div class="line">rm -rf ./wmsign/.*</div><div class="line">mv ./filebox/* ./</div><div class="line">mv ./wmsign/* ./</div><div class="line">rm -rf filebox</div><div class="line">rm -rf wmsign</div><div class="line">chown -R www-data:www-data /var/www</div><div class="line">chmod -R 777 /var/www/*</div><div class="line">service apache2 restart</div></pre></td></tr></table></figure></p>
+<h3>三、建立cron计划任务</h3>
+
+<p>1.</p>
+<p>#修复connect refuse问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dpkg-divert --local --rename --add /sbin/initctl</div><div class="line">ln -s /bin/true /sbin/initctl</div></pre></td></tr></table></figure></p>
+<p>#编辑cron表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -e</div></pre></td></tr></table></figure></p>
+<p>2.<br>选择编辑器，推荐vi和vim<br>按键盘上的字母 i 进行编辑<br>在最底部正确添加语法，格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">*/1 * * * *  curl &quot;</div><div class="line">http://localhost/cron/qsigntask.php?sys=1&amp;key=305694</div><div class="line">&quot;</div><div class="line">*/1 * * * *  curl &quot;</div><div class="line">http://localhost/cron/qzonetask.php?sys=1&amp;key=305694</div><div class="line">&quot;</div><div class="line">*/1 * * * *  curl &quot;</div><div class="line">http://localhost/cron/zantask.php?sys=1&amp;key=305694</div><div class="line">&quot;</div><div class="line">*/1 * * * *  curl &quot;</div><div class="line">http://localhost/cron/qsigntask.php?sys=1&amp;key=305694</div><div class="line">&quot;</div><div class="line">*/1 * * * *  curl &quot;</div><div class="line">http://localhost/cron/wsigntask.php?sys=1&amp;key=305694</div><div class="line">&quot;</div><div class="line">*/1 * * * *  curl &quot;</div><div class="line">http://localhost/cron/wztask.php?sys=1&amp;key=305694</div><div class="line">&quot;</div><div class="line">*/1 * * * *  curl &quot;</div><div class="line">http://localhost/cron/newsid.php?&amp;key=305694</div><div class="line">&quot;</div></pre></td></tr></table></figure></p>
+<p>编辑好后，按一下ESC，然后键入:wq保存</p>
+<p>3.</p>
+<p>#启动cron<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service cron start</div></pre></td></tr></table></figure></p>
+<p> 如果提示</p>
+<p>Rather than invoking init scripts through /etc/init.d, use the service(8)<br>utility, e.g. service cron restart<br>Since the script you are attempting to invoke has been converted to an<br>Upstart job, you may also use the stop(8) and then start(8) utilities,<br>e.g. stop cron ; start cron. The restart(8) utility is also available.</p>
+<p>则应该这样启动：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cron start/running</div></pre></td></tr></table></figure></p>
+<p>或者，自定义pid：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cron start/running, process 6328</div></pre></td></tr></table></figure></p>
+<p>若提示找不到pid什么的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf /var/run/crond.pid</div></pre></td></tr></table></figure></p>
+<p>若还不行，试试重装cron：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install --reinstall cron</div></pre></td></tr></table></figure></p>
+<p>使用以下的其中一条命令可停止cron：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cron stop/waiting</div><div class="line">service cron stop</div></pre></td></tr></table></figure></p>
+<h3>四、启用https</h3>
+
+<p>开启SSL模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a2enmod ssl</div></pre></td></tr></table></figure></p>
+<p>编辑配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/apache2/sites-enabled/000-default.conf</div></pre></td></tr></table></figure></p>
+<p>添加以下内容（示例）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;VirtualHost *:443&gt;</div><div class="line"></div><div class="line">        ServerAdmin webmaster@localhost</div><div class="line">        DocumentRoot /var/www/html</div><div class="line">        ErrorLog $&#123;APACHE_LOG_DIR&#125;/error.log</div><div class="line">        CustomLog $&#123;APACHE_LOG_DIR&#125;/access.log</div><div class="line">       combined</div><div class="line">       SSLEngine on</div><div class="line">       SSLCertificateFile  /etc/ssl/iikira/2_kk.iikira.com.crt</div><div class="line">       SSLCertificateKeyFile /etc/ssl/iikira/kk.iikira.com_key</div><div class="line">       SSLCertificateChainFile /etc/ssl/iikira/1_root_bundle.crt</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure></p>
+<p>重启服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service apache2 restart</div></pre></td></tr></table></figure></p>
+<h3>五、生成全部端口</h3>
+
+<p> 注意，无法使用22,2376,7946,8300,8400,8600端口，有需要的请替换别的，如-p 220:22 译为 远程访问[server_ip]:220 将被宿主机重定向到内部容器的22端口 从而实现ssh登录。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javascript:<span class="keyword">var</span> a=&#123;&#125;,i,d=<span class="string">""</span>;<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;<span class="number">10086</span>;i++)&#123;a[i]=<span class="string">"-p "</span>+i+<span class="string">":"</span>+i+<span class="string">" "</span>;d+=a[i]&#125;;<span class="built_in">document</span>.write(<span class="string">"docker run --name ubuntu "</span>+d+<span class="string">"-t -i ubuntu:base /bin/bash"</span>);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://www.iikira.com/2016/07/03/ubuntu-conf/" data-id="ciqn6x1at000et4txkxhbxff9" class="article-share-link" data-share="baidu" data-title="使用carina容器建设Ubuntu镜像等">Share</a>
+      
+
+      
+        <a href="http://www.iikira.com/2016/07/03/ubuntu-conf/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Carina/">Carina</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/09/Carina-Plan/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Carina Plan
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/30/ss-find-code/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">[转]Google搜索技巧(找码)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/07/03/ubuntu-conf/" data-title="使用carina容器建设Ubuntu镜像等" data-url="http://www.iikira.com/2016/07/03/ubuntu-conf/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/分享/">分享</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔记/">笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/记录/">记录</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Carina/">Carina</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lighttpd/">lighttpd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sms/">sms</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/百度贴吧/">百度贴吧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Carina/" style="font-size: 20px;">Carina</a> <a href="/tags/Google/" style="font-size: 10px;">Google</a> <a href="/tags/lighttpd/" style="font-size: 10px;">lighttpd</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/sms/" style="font-size: 10px;">sms</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/百度贴吧/" style="font-size: 10px;">百度贴吧</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/09/Carina-Plan/">Carina Plan</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/03/ubuntu-conf/">使用carina容器建设Ubuntu镜像等</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/30/ss-find-code/">[转]Google搜索技巧(找码)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/08/mac-mysql/">在mac上安装mysql5.7.10</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/06/SMSs/">SMS相关</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://lengthmin.com" target="_blank">lengthmin</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 konica<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/categories/分享/" class="mobile-nav-link">分享</a>
+  
+    <a href="/categories/笔记/" class="mobile-nav-link">笔记</a>
+  
+    <a href="/categories/记录/" class="mobile-nav-link">记录</a>
+  
+    <a href="/categories/随笔/" class="mobile-nav-link">随笔</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/About" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="totop"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"iikira"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
